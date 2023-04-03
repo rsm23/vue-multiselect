@@ -145,7 +145,7 @@
           </li>
             <li v-show="showNoOptions && ((options.length === 0 || (hasOptionGroup === true && filteredOptions.length === 0)) && !search && !loading)">
             <span class="multiselect__option">
-              <slot name="noOptions">List is empty.</slot>
+              <slot name="noOptions">{{ noOptionsLabel }}</slot>
             </span>
           </li>
           <slot name="afterList"></slot>
@@ -181,6 +181,15 @@ export default {
       default () {
         return []
       }
+    },
+    /**
+       * String to show when pointing to an option
+       * @default 'Press enter to select'
+       * @type {String}
+       */
+    noOptionsLabel: {
+      type: String,
+      default: 'List is empty'
     },
     /**
        * String to show when pointing to an option
